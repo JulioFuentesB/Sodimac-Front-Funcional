@@ -1,0 +1,48 @@
+
+@import '~@angular/material/theming';
+// Colors scss
+@import "colors";
+
+// ng-select styles
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+// Custom/My styles
+@import "custom-styles";
+
+//  ngx-toastr Styles
+@import '~ngx-toastr/toastr';
+
+
+$custom-typography : mat-typography-config(
+        $font-family : 'Muli, "Helvetica Neue", Arial, sans-serif',
+        $title       : mat-typography-level(20px, 32px, 600),
+        $body-2      : mat-typography-level(14px, 24px, 600),
+        $button      : mat-typography-level(14px, 14px, 600),
+        $input       : mat-typography-level(12px, 1.125, 400)
+);
+@include mat-core($custom-typography);
+
+
+$oc-manuales-theme : mat-light-theme((
+        color: (
+                primary: mat-palette($md-primary-sod-color),
+                accent: mat-palette($md-accent-sod-color),
+                warn: mat-palette($md-second-sod-color),
+        )
+));
+
+@include angular-material-theme($oc-manuales-theme);
+
+html, body {
+  height      : 100% !important;
+  margin      : 0;
+  font-family : Muli, "Helvetica Neue", Arial, sans-serif;
+  font-size   : 12px;
+}
+
+.progress-inner {
+  padding : 3px !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
