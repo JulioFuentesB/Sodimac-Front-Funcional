@@ -14,7 +14,7 @@
 
 
 $custom-typography : mat-typography-config(
-        $font-family : 'Muli, "Helvetica Neue", Arial, sans-serif',
+        $font-family : 'Lato, "Helvetica Neue", Arial, sans-serif',
         $title       : mat-typography-level(20px, 32px, 600),
         $body-2      : mat-typography-level(14px, 24px, 600),
         $button      : mat-typography-level(14px, 14px, 600),
@@ -36,13 +36,10 @@ $oc-manuales-theme : mat-light-theme((
 html, body {
   height      : 100% !important;
   margin      : 0;
-  font-family : Muli, "Helvetica Neue", Arial, sans-serif;
+  font-family : Lato, "Helvetica Neue", Arial, sans-serif;
   font-size   : 12px;
 }
 
 .progress-inner {
   padding : 3px !important;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -20,7 +20,7 @@ export class AppComponent {
   versionNumber: string;
   maxTimeToShowMessage = 2000;
 
-  isInternet = true;
+  isInternet = false;
   hasJson = false;
 
   constructor(
@@ -96,7 +96,7 @@ export class AppComponent {
       .subscribe({next: (data: any) => {
           if (data) {
             if(this.hasJson){
-              this.getConfigurationJson();                  
+              this.getConfigurationJson();
             } else {
               this.showContent = true;
               this.showMsj = true;
@@ -119,7 +119,7 @@ export class AppComponent {
               this.showMsj = true;
               break;
           }
-          this.showContent = false;         
+          this.showContent = false;
         }}
       );
   }
