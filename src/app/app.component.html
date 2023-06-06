@@ -12,14 +12,15 @@
   </div>
   <div [ngClass.gt-sm]="'main-contend-lg'" [ngClass]="'main-contend-sm'" class="main-contend" fxLayout="column">
     <div class="header-container" fxLayout fxLayoutAlign="start center">
+      <img class="logo" src="assets/images/DataLogBlanco.png" alt="Datalog Logo" height="60">
       <button *ngIf="(pageService.headerPage | async)?.backButton"
         (click)="handlerBack((pageService.headerPage.getValue()).routePath || ' - ')" fxLayout
-        fxLayoutAlign="center center" class="mr-8" mat-icon-button>
+        fxLayoutAlign="center center" mat-icon-button>
         <mat-icon class="icon-size-24 button-back" fontSet="material-icons-round" matTooltip="Volver"
           matTooltipPosition="above">arrow_back
         </mat-icon>
       </button>
-      <h2 [ngClass.gt-sm]="'main-tittle-lg'" [ngClass]="'main-tittle-sm'" class="main-tittle">
+      <h2 [ngClass.gt-sm]="'main-tittle-lg'" [ngClass]="'main-tittle-sm'" class="main-tittle ml-8">
         {{((pageService.headerPage | async)?.tittleName || ' - ')}}
       </h2>
     </div>
