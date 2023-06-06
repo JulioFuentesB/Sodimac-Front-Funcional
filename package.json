@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "dev": "ng build --base-href /Aplicaciones/OcInventario/ --output-path dist/Aplicaciones/OcInventario",
     "qa": "ng build -c qa --base-href /Aplicaciones/OcInventario/ --output-path dist/Aplicaciones/OcInventario",
-    "prod": "ng build --prod --base-href /Aplicaciones/OcInventario/ --output-path dist/Aplicaciones/OcInventario",
+    "prod": "ng build -c production --base-href /Aplicaciones/OcInventario/ --output-path dist/Aplicaciones/OcInventario",
     "all": "npm run dev && npm run qa && npm run prod"
   },
   "private": true,
