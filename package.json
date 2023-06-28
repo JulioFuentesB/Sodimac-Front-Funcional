@@ -1,5 +1,5 @@
 {
-  "name": "plantilla-angular-v14",
+  "name": "plantilla-angular-v13",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,9 +9,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "dev": "ng build --base-href /Aplicaciones/OcInventario/ --output-path dist/Aplicaciones/OcInventario",
-    "qa": "ng build -c qa --base-href /Aplicaciones/OcInventario/ --output-path dist/Aplicaciones/OcInventario",
-    "prod": "ng build -c production --base-href /Aplicaciones/OcInventario/ --output-path dist/Aplicaciones/OcInventario",
+    "compila-dev": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=dev --output-path=dist",
+    "compila-qa": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=qa --output-path=dist",
+    "compila-prod": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=production --output-path=dist",
     "all": "npm run dev && npm run qa && npm run prod"
   },
   "private": true,
@@ -21,7 +21,7 @@
     "@angular/common": "^14.3.0",
     "@angular/compiler": "^14.3.0",
     "@angular/core": "^14.3.0",
-    "@angular/flex-layout": "^14.0.0-beta.41",
+    "@angular/flex-layout": "^14.0.0-beta.40",
     "@angular/forms": "^14.3.0",
     "@angular/material": "^14.2.7",
     "@angular/platform-browser": "^14.3.0",

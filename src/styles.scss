@@ -1,16 +1,16 @@
 
-@import '~@angular/material/theming';
+@import '@angular/material/theming';
 // Colors scss
 @import "colors";
 
 // ng-select styles
-@import "~@ng-select/ng-select/themes/material.theme.css";
+@import "@ng-select/ng-select/themes/material.theme.css";
 
 // Custom/My styles
 @import "custom-styles";
 
 //  ngx-toastr Styles
-@import '~ngx-toastr/toastr';
+@import 'ngx-toastr/toastr';
 
 
 $custom-typography : mat-typography-config(
