@@ -27,7 +27,7 @@
     "@angular/platform-browser": "^14.3.0",
     "@angular/platform-browser-dynamic": "^14.3.0",
     "@angular/router": "^14.3.0",
-    "@ng-select/ng-select": "^8.1.1",
+    "@ng-select/ng-select": "^9.1.0",
     "@types/crypto-js": "^4.1.1",
     "@types/pdfmake": "^0.1.21",
     "crypto-js": "^4.1.1",
