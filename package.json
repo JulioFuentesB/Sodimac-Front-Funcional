@@ -1,11 +1,11 @@
 {
-  "name": "plantilla-angular-v13",
-  "version": "0.0.0",
+  "name": "plantilla-angular-v16",
+  "version": "1.3.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4201",
-    "start:qa": "ng serve -c qa --port 4201",
-    "start:prod": "ng serve --prod --port 4201",
+    "start": "ng serve --port 4208",
+    "start:qa": "ng serve -c qa --port 4208",
+    "start:prod": "ng serve --prod --port 4208",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
