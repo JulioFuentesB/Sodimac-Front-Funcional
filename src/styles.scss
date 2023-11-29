@@ -1,5 +1,7 @@
+// Mmaterial definitions
+@use "../node_modules/@angular/material" as mat;
+@include mat.core();
 
-@import '@angular/material/theming';
 // Colors scss
 @import "colors";
 
@@ -10,36 +12,39 @@
 @import "custom-styles";
 
 //  ngx-toastr Styles
-@import 'ngx-toastr/toastr';
+@import "ngx-toastr/toastr";
 
+// fonts
+@import "fonts";
 
-$custom-typography : mat-typography-config(
-        $font-family : 'Lato, "Helvetica Neue", Arial, sans-serif',
-        $title       : mat-typography-level(20px, 32px, 600),
-        $body-2      : mat-typography-level(14px, 24px, 600),
-        $button      : mat-typography-level(14px, 14px, 600),
-        $input       : mat-typography-level(12px, 1.125, 400)
+// SGL Styles
+
+// PALETTES
+$my-primary: mat.define-palette($md-primary-sod-color);
+$my-accent: mat.define-palette($md-accent-sod-color);
+$my-warn: mat.define-palette($md-second-sod-color);
+
+$sod-theme: mat.define-light-theme((
+    color: (
+      primary:  $my-primary,
+      accent:   $my-accent,
+      warn:     $my-warn,
+    ),
+    typography: mat.define-typography-config($font-family: "Lato"),
+    density: 0,
+  )
 );
-@include mat-core($custom-typography);
 
+@include mat.all-component-themes($sod-theme);
 
-$oc-manuales-theme : mat-light-theme((
-        color: (
-                primary: mat-palette($md-primary-sod-color),
-                accent: mat-palette($md-accent-sod-color),
-                warn: mat-palette($md-second-sod-color),
-        )
-));
-
-@include angular-material-theme($oc-manuales-theme);
-
-html, body {
-  height      : 100% !important;
-  margin      : 0;
-  font-family : Lato, "Helvetica Neue", Arial, sans-serif;
-  font-size   : 12px;
+html,
+body {
+  font-family: "Lato", sans-serif;
+  height: 100% !important;
+  margin: 0;
+  font-size: 12px;
 }
 
 .progress-inner {
-  padding : 3px !important;
+  padding: 3px !important;
 }

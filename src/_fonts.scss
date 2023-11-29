@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Lato';
-  src: url('./../fonts/Lato-Regular.ttf') format('truetype');
-  font-weight: 500;
+  src: url('./assets/fonts/Lato-Regular.ttf') format('truetype');
+  font-weight: 100;
   font-style: normal;
 }
 
@@ -9,7 +9,7 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url('./../fonts/MaterialIconsOutlined-Regular.otf');
+  src: url('./assets/fonts/MaterialIconsOutlined-Regular.otf');
 }
 
 .material-icons {
