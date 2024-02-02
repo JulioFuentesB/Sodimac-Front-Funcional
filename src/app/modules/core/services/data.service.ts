@@ -109,7 +109,7 @@ export class DataService {
     }
 
     // Post Generico Intranet Custom Api
-    postGenericoIntranetCustomApi<T>(urlService: string, data: any, params?: HttpParams): Observable<T> {
+    postGenericoIntranetCustomApi<T>(urlService: string, data: any): Observable<T> {
         return this.http.post<T>(urlService, data, { headers: this.generateBasicHeadersIntranet()});
     }
 
@@ -120,7 +120,7 @@ export class DataService {
     }
 
     // Put Generico Intranet Custom Api
-    putGenericoIntranetCustomApi<T>(urlService: string, data: any, params?: HttpParams): Observable<T> {
+    putGenericoIntranetCustomApi<T>(urlService: string, data: any): Observable<T> {
         return this.http.put<T>(urlService, data, { headers: this.generateBasicHeadersIntranet()});
     }
 }
