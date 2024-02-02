@@ -7,13 +7,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToastrModule } from 'ngx-toastr';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import { getEtiquetasPaginador } from '../core/utils/configuracionPaginador';
-import { VerFotoComponent } from '../genericos/ver-foto/ver-foto.component';
+import { paginatorLabels } from '../core/utils/configuracionPaginador';
 
 @NgModule({
-    declarations: [
-        VerFotoComponent,
-    ],
+    declarations: [],
     imports: [
         CommonModule,
         FormsModule,
@@ -53,7 +50,7 @@ import { VerFotoComponent } from '../genericos/ver-foto/ver-foto.component';
                 }
             }
         },
-        { provide: MatPaginatorIntl, useValue: getEtiquetasPaginador() }
+        { provide: MatPaginatorIntl, useValue: paginatorLabels() }
     ]
 })
 export class SharedModule {

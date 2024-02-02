@@ -1,8 +1,8 @@
 import { MatPaginatorIntl } from '@angular/material/paginator';
 
-const rangoFechaLabel = (page: number, pageSize: number, length: number) => {
+const rangeLabel = (page: number, pageSize: number, length: number) => {
   if (length === 0 || pageSize === 0) { return `0 de ${length}`; }
-  
+
   length = Math.max(length, 0);
 
   const startIndex = page * pageSize;
@@ -16,15 +16,15 @@ const rangoFechaLabel = (page: number, pageSize: number, length: number) => {
 };
 
 
-export function getEtiquetasPaginador(): MatPaginatorIntl {
+export function paginatorLabels(): MatPaginatorIntl {
   const paginatorIntl = new MatPaginatorIntl();
-  
-  paginatorIntl.itemsPerPageLabel = 'items por paginas:';
-  paginatorIntl.nextPageLabel = 'siguiente';
-  paginatorIntl.previousPageLabel = 'anterior';
-  paginatorIntl.firstPageLabel = 'Primera página';
-  paginatorIntl.lastPageLabel = 'Ultima página';
-  paginatorIntl.getRangeLabel = rangoFechaLabel;
-  
+
+  paginatorIntl.itemsPerPageLabel = 'Ítems por paginas:';
+  paginatorIntl.nextPageLabel = 'Siguiente';
+  paginatorIntl.previousPageLabel = 'Anterior';
+  paginatorIntl.firstPageLabel = 'Primer página';
+  paginatorIntl.lastPageLabel = 'Última página';
+  paginatorIntl.getRangeLabel = rangeLabel;
+
   return paginatorIntl;
 }

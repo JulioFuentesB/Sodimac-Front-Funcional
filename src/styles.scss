@@ -1,4 +1,4 @@
-// Mmaterial definitions
+// Material definitions
 @use "../node_modules/@angular/material" as mat;
 @include mat.core();
 
@@ -16,6 +16,9 @@
 
 // fonts
 @import "fonts";
+
+// Generate Bootstrap spacing classes
+@include generate-bootstrap-spacing($spacing-sizes);
 
 // SGL Styles
 

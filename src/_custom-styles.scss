@@ -194,35 +194,49 @@ ng-select {
 
 //endregion
 
-// region Utils Styles
-$increments : (0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88, 102, 118, 124, 136, 148);
-$directions : (top, bottom, right, left);
-@each $increment in $increments {
-  .m-#{$increment} {
-    margin : #{$increment}px !important;
-  }
-  .p-#{$increment} {
-    padding : #{$increment}px !important;
-  }
-  @each $direction in $directions {
-    .m#{str-slice($direction, 0, 1)}-#{$increment} {
-      margin-#{$direction}: #{$increment}px !important;
-    }
-    .p#{str-slice($direction, 0, 1)}-#{$increment} {
-      padding-#{$direction}: #{$increment}px !important;
-    }
-  }
-}
+// Define Bootstrap's spacing scale in rems
+$spacing-sizes: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 0.75,
+  4: 1,
+  5: 1.25,
+  6: 1.5,
+  7: 1.75,
+  8: 2,
+  9: 2.5,
+  10: 3,
+  11: 3.5,
+  12: 4,
+  13: 4.5,
+  14: 5
+);
 
-@each $increment in $increments {
-  .icon-size-#{$increment} {
-    height      : #{$increment}px !important;
-    min-height  : #{$increment}px !important;
-    width       : #{$increment}px !important;
-    min-width   : #{$increment}px !important;
-    font-size   : #{$increment}px !important;
-    line-height : #{$increment}px !important;
+// Define a mixin for generating spacing classes
+@mixin generate-bootstrap-spacing($spacing-map) {
+  @each $key, $size in $spacing-map {
+    .m-#{$key} { margin: #{$size}rem !important; }
+    .mt-#{$key}, .my-#{$key} { margin-top: #{$size}rem !important; }
+    .mr-#{$key}, .mx-#{$key} { margin-right: #{$size}rem !important; }
+    .mb-#{$key}, .my-#{$key} { margin-bottom: #{$size}rem !important; }
+    .ml-#{$key}, .mx-#{$key} { margin-left: #{$size}rem !important; }
+
+    .p-#{$key} { padding: #{$size}rem !important; }
+    .pt-#{$key}, .py-#{$key} { padding-top: #{$size}rem !important; }
+    .pr-#{$key}, .px-#{$key} { padding-right: #{$size}rem !important; }
+    .pb-#{$key}, .py-#{$key} { padding-bottom: #{$size}rem !important; }
+    .pl-#{$key}, .px-#{$key} { padding-left: #{$size}rem !important; }
   }
+
+  // Generate auto margin classes
+  .m-auto { margin: auto !important; }
+  .mt-auto { margin-top: auto !important; }
+  .mr-auto { margin-right: auto !important; }
+  .mb-auto { margin-bottom: auto !important; }
+  .ml-auto { margin-left: auto !important; }
+  .mx-auto { margin-right: auto !important; margin-left: auto !important; }
+  .my-auto { margin-top: auto !important; margin-bottom: auto !important; }
 }
 
 .text-ellipsis {
@@ -231,18 +245,10 @@ $directions : (top, bottom, right, left);
   overflow      : hidden;
 }
 
-.font-size-11 {
-  font-size : 11px !important;
-}
-
 @for $size from 1 through 60 {
   .font-size-#{$size * 2} {
     font-size : #{$size * 2}px !important;
   }
-}
-
-.color-gray {
-  color : #707070;
 }
 
 .text-bold, strong {

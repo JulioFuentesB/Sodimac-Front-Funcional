@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { StorageService } from "./storage.service";
 import { environment } from "src/environments/environment";
@@ -38,7 +38,7 @@ export class DataService {
         });
     }
 
-    //Post Internet sin encriptar por JSON 
+    //Post Internet sin encriptar por JSON
     postGenericByConfigurationInternet(attribute: string, data: any, urlService: string): Observable<any> {
         return this.http.post(
             this.variableConfiguracion(attribute) + urlService, data, {
@@ -46,7 +46,7 @@ export class DataService {
         });
     }
 
-    //Post Internet encriptado por JSON 
+    //Post Internet encriptado por JSON
     postGenericEncryptByConfigurationInternet(attribute: string, data: any, urlService: string): Observable<any> {
         let bodyParametros = {
             "Parametros": Helper.encrypt(JSON.stringify(data))
@@ -82,7 +82,7 @@ export class DataService {
     }
 
     // Post Generico Intranet
-    postGenericoService(data: any, urlService: any): Observable<any> {        
+    postGenericoService(data: any, urlService: any): Observable<any> {
         return this.http.post(environment.intranet.api + urlService, data ,{
           headers: this.generateBasicHeadersIntranet()
         })
@@ -106,5 +106,21 @@ export class DataService {
     variableConfiguracion(key: string) {
         const conf = this.storageService.json;
         return conf[key];
+    }
+
+    // Post Generico Intranet Custom Api
+    postGenericoIntranetCustomApi<T>(urlService: string, data: any, params?: HttpParams): Observable<T> {
+        return this.http.post<T>(urlService, data, { headers: this.generateBasicHeadersIntranet()});
+    }
+
+    // Get Generico Intranet Custom Api
+    getGenericoIntranetCustomApi<T>(urlService: string, params?: HttpParams): Observable<T> {
+        if (params) return this.http.get<T>(urlService, { headers: this.generateBasicHeadersIntranet(), params: params});
+        return this.http.get<T>(urlService, { headers: this.generateBasicHeadersIntranet()});
+    }
+
+    // Put Generico Intranet Custom Api
+    putGenericoIntranetCustomApi<T>(urlService: string, data: any, params?: HttpParams): Observable<T> {
+        return this.http.put<T>(urlService, data, { headers: this.generateBasicHeadersIntranet()});
     }
 }

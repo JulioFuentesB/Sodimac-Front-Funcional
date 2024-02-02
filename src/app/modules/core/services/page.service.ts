@@ -6,7 +6,6 @@ export class HeaderObj {
   routePath: string;
   backButton: boolean;
 
-
   constructor(tittleName: string, routePath: string = '', backButton: boolean = false) {
     this.tittleName = tittleName;
     this.routePath  = routePath;
@@ -18,7 +17,6 @@ export class HeaderObj {
   providedIn: 'root'
 })
 export class PageService {
-
   private readonly headerPageVar;
 
   constructor() {
@@ -30,8 +28,6 @@ export class PageService {
   }
 
   setHeaderPage(value: HeaderObj) {
-    setTimeout(() => {
-      this.headerPageVar.next(value);  
-    }, 0);
+    setTimeout(() => this.headerPageVar.next(value), 0);
   }
 }

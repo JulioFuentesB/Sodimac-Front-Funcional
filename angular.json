@@ -123,6 +123,9 @@
             "qa": {
               "browserTarget": "plantilla-angular-v13:build:qa"
             },
+            "dev": {
+              "browserTarget": "plantilla-angular-v13:build:dev"
+            },
             "development": {
               "browserTarget": "plantilla-angular-v13:build:development"
             }
