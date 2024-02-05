@@ -17,10 +17,11 @@
 // fonts
 @import "fonts";
 
+// SGL Styles
+@import "sgl-styles";
+
 // Generate Bootstrap spacing classes
 @include generate-bootstrap-spacing($spacing-sizes);
-
-// SGL Styles
 
 // PALETTES
 $my-primary: mat.define-palette($md-primary-sod-color);
@@ -28,14 +29,14 @@ $my-accent: mat.define-palette($md-accent-sod-color);
 $my-warn: mat.define-palette($md-second-sod-color);
 
 $sod-theme: mat.define-light-theme((
-    color: (
-      primary:  $my-primary,
-      accent:   $my-accent,
-      warn:     $my-warn,
-    ),
-    typography: mat.define-typography-config($font-family: "Lato"),
-    density: 0,
-  )
+  color: (
+    primary:  $my-primary,
+    accent:   $my-accent,
+    warn:     $my-warn,
+  ),
+  typography: mat.define-typography-config($font-family: "Lato"),
+  density: 0,
+)
 );
 
 @include mat.all-component-themes($sod-theme);
