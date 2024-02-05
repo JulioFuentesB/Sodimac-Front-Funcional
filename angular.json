@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "plantilla-angular-v13": {
+    "plantilla-angular-dlog": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/plantilla-angular-v13",
+            "outputPath": "dist/plantilla-angular-dlog",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -118,16 +118,16 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "plantilla-angular-v13:build:production"
+              "browserTarget": "plantilla-angular-dlog:build:production"
             },
             "qa": {
-              "browserTarget": "plantilla-angular-v13:build:qa"
+              "browserTarget": "plantilla-angular-dlog:build:qa"
             },
             "dev": {
-              "browserTarget": "plantilla-angular-v13:build:dev"
+              "browserTarget": "plantilla-angular-dlog:build:dev"
             },
             "development": {
-              "browserTarget": "plantilla-angular-v13:build:development"
+              "browserTarget": "plantilla-angular-dlog:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -135,7 +135,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "plantilla-angular-v13:build"
+            "browserTarget": "plantilla-angular-dlog:build"
           }
         },
         "test": {
