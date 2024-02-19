@@ -15,14 +15,20 @@ Para proyectos que no buscan implementar una arquitectura de microfront, se reco
 ## Características
 
 - **Angular v16**: Una de las últimas versiones del popular framework de desarrollo web.
-- **Angular Material**: Un conjunto de componentes de Material Design para Angular.
+- **Angular Material**: Un conjunto de componentes de Material Design para Angular, Algunos de ellos ya personalizados para Sodimac.
+- **Angular Material Icons Regular, Rounded y Outlined**: Iconos de Material Design donde su uso son respectivamente: 
+  `<mat-icon>arrow_back</mat-icon>`,
+  `<mat-icon fontSet="material-icons-round">arrow_back</mat-icon>`,
+  `<mat-icon fontSet="material-icons-outlined">arrow_back</mat-icon>`.
 - **Spacers de Bootstrap**: Utilidades para manejar el espaciado y alineación de elementos.
 - **State Manager**: Un servicio inyectable para manejar el estado de la aplicación permitiendo comunicación entre componentes sin necesidad de usar databinding entre componentes.
-- **Estilos Personalizados SGL**: Una hoja de estilos SCSS que define la apariencia personalizada de la aplicación.
+- **Estilos Personalizados SGL**: `sgl-styles.scss` Una hoja de estilos SCSS que define la apariencia personalizada de la aplicación.
 - **@ng-select/ng-select**: Un componente de Angular para crear campos de selección personalizados, avanzados y con cierta flexibilidad al usar que los selectores nativos no poseen.
 - **@angular/flex-layout**: Una biblioteca para Angular que permite el uso de Flexbox CSS para el diseño de la aplicación.
 - **Home.Component.ts**: La aplicación está ideada para que éste componente aloje la página principal de la aplicación y los folders `components` y `views` contengan los componentes y vistas que se requieran.
 - **Home.Module.ts**: El módulo principal de la aplicación, que importa y declara los componentes y servicios necesarios para la aplicación añadidos y sin modificar el `App.Module.ts`.
+- **SpinnerInterceptor**: Un interceptor automático que permite mostrar un spinner de carga en la aplicación mientras se realizan peticiones HTTP.
+- **DialogService**: Un servicio donde debe consignarse la configuración con la que se lanzan los diálogos modales personalizados de la aplicación.
 
 ## Dependencias
 
