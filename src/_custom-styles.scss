@@ -95,10 +95,6 @@ ng-select {
 
   & .ng-select-container {
     min-height : 47px !important;
-
-    /*&.ng-appearance-outline:hover:after {
-      border-color : $primary !important;
-    }*/
   }
 
   & .ng-spinner-loader {
@@ -273,6 +269,10 @@ $spacing-sizes: (
 
 .over-flow-auto {
   overflow-y : auto;
+}
+
+.mat-mdc-dialog-container, .mdc-dialog__surface {
+  box-shadow: unset !important;
 }
 
 // endregion

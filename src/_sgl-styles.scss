@@ -3,8 +3,6 @@
 .sgl__frame {
   box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  height: 100%;
-  padding: 8px 32px;
 }
 
 .sgl__divider {
@@ -222,17 +220,16 @@
   box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   padding: 2rem 1.5rem;
-  width: 500px;
-  height: 500px;
+  overflow: hidden;
 
   @media (max-width: 959px) {
-      width: 90vw !important;
+    width: 90vw !important;
   }
 
   .mat-dialog-container {
-      box-shadow: unset !important;
-      border-radius: unset;
-      padding: 0;
+    box-shadow: unset !important;
+    border-radius: unset;
+    padding: 0;
   }
 }
 
@@ -241,6 +238,10 @@
   border-radius: 20px;
   box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
   padding: .5rem;
+}
+
+.sgl__icon {
+  color: #0072CE;
 }
 
 .sgl__icon--success {

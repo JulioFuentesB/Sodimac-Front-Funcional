@@ -41,6 +41,10 @@ $sod-theme: mat.define-light-theme((
 
 @include mat.all-component-themes($sod-theme);
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   font-family: "Lato", sans-serif;
