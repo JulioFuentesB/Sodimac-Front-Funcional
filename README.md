@@ -20,6 +20,7 @@ Para proyectos que no buscan implementar una arquitectura de microfront, se reco
   `<mat-icon>arrow_back</mat-icon>`,
   `<mat-icon fontSet="material-icons-round">arrow_back</mat-icon>`,
   `<mat-icon fontSet="material-icons-outlined">arrow_back</mat-icon>`.
+- **Traducción de elementos de paginador de angular matierial**: Traducción de los elementos de paginador de angular material al español en el archivo `configuracionPaginador.ts`.
 - **Spacers de Bootstrap**: Utilidades para manejar el espaciado y alineación de elementos.
 - **State Manager**: Un servicio inyectable para manejar el estado de la aplicación permitiendo comunicación entre componentes sin necesidad de usar databinding entre componentes.
 - **Estilos Personalizados SGL**: `sgl-styles.scss` Una hoja de estilos SCSS que define la apariencia personalizada de la aplicación.
