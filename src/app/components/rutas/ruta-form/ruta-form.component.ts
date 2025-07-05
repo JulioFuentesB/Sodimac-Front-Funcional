@@ -28,17 +28,16 @@ import { Ruta, RutaCreate, RutaUpdate } from '../../../models/ruta';
     
     <form [formGroup]="rutaForm" (ngSubmit)="onSubmit()">
       <mat-dialog-content>
-        <mat-form-field appearance="outline" class="w-full">
-          <mat-label>Nombre</mat-label>
-          <input matInput formControlName="nombre" required>
+
+        <!-- <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado" required>
         </mat-form-field>
-
-
 
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Fecha Asignacion</mat-label>
           <input matInput formControlName="fechaAsignacion" type="date" required>
-        </mat-form-field>
+        </mat-form-field> -->
 
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Fecha Estimada Entrega</mat-label>
@@ -73,8 +72,8 @@ export class RutaFormComponent {
     private activeSwal: any = null; // Referencia a la alerta activa
 
   rutaForm = this.fb.group({
-    estado: ['', Validators.required],
-    fechaAsignacion: ['', [Validators.required]],
+    // estado: ['', Validators.required],
+    // fechaAsignacion: ['', [Validators.required]],
     fechaEstimadaEntrega: ['', Validators.required]
   });
 
@@ -87,7 +86,7 @@ export class RutaFormComponent {
   ) {
     if (data) {
       this.rutaForm.patchValue({
-        estado: data.estado,
+        //estado: data.estado,
         // fechaAsignacion: data.fechaAsignacion,
         // fechaEstimadaEntrega: data.fechaEstimadaEntrega
   
