@@ -1,0 +1,92 @@
+<div class="form-container mat-elevation-z4">
+  <h2 class="form-title">Registro de Nuevo Pedido</h2>
+
+  <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()" class="producto-item">
+    <!-- Selección de Cliente -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Cliente</mat-label>
+      <mat-select formControlName="clienteId" required>
+        <mat-option *ngFor="let cliente of clientes" [value]="cliente.idCliente">
+          {{ cliente.nombre }} - {{ cliente.email }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="pedidoForm.get('clienteId')?.hasError('required')">
+        Seleccione un cliente
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Fecha de Entrega -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Fecha de Entrega</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaEntrega" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="pedidoForm.get('fechaEntrega')?.hasError('required')">
+        Ingrese una fecha de entrega
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Lista de Productos -->
+    <div formArrayName="productos" class="productos-container">
+      <h3>Productos</h3>
+      
+      <div *ngFor="let producto of productosArray.controls; let i = index" [formGroupName]="i" class="producto-item">
+        <div class="producto-fields">
+          <!-- Selección de Producto -->
+          <mat-form-field appearance="outline" class="producto-field">
+            <mat-label>Producto</mat-label>
+            <mat-select formControlName="productoId" required>
+              <mat-option *ngFor="let producto of productosDisponibles" [value]="producto.idProducto">
+                {{ producto.nombre }} - ${{ producto.precio | number }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="productosArray.at(i).get('productoId')?.hasError('required')">
+              Seleccione un producto
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Cantidad -->
+          <mat-form-field appearance="outline" class="cantidad-field">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" formControlName="cantidad" min="1" required>
+            <mat-error *ngIf="productosArray.at(i).get('cantidad')?.hasError('required')">
+              Ingrese la cantidad
+            </mat-error>
+            <mat-error *ngIf="productosArray.at(i).get('cantidad')?.hasError('min')">
+              Mínimo 1 unidad
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Botón Eliminar -->
+          <button mat-icon-button color="warn" type="button" (click)="removeProducto(i)" class="remove-btn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Botón Agregar Producto -->
+      <button mat-stroked-button type="button" (click)="addProducto()" color="primary" class="add-btn">
+        <mat-icon>add</mat-icon>
+        Agregar Producto
+      </button>
+    </div>
+
+    <!-- Observaciones -->
+    <mat-form-field appearance="outline" class="form-field-obs">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observaciones" rows="3"></textarea>
+    </mat-form-field>
+
+    <!-- Botones de Acción -->
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+        <mat-icon>save</mat-icon>
+        {{ loading ? 'Registrando...' : 'Registrar Pedido' }}
+      </button>
+      <button mat-stroked-button type="button" (click)="pedidoForm.reset()" color="warn">
+        <mat-icon>clear</mat-icon>
+        Limpiar
+      </button>
+    </div>
+  </form>
+</div>

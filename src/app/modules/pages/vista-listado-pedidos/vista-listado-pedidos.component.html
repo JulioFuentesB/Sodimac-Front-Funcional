@@ -1,0 +1,102 @@
+<div class="pedidos-container">
+    <!-- Filtros -->
+    <div class="filtros-container mat-elevation-z2">
+        <mat-form-field appearance="outline" class="search-field">
+            <mat-label>Buscar pedidos</mat-label>
+            <input matInput [formControl]="searchControl" placeholder="ID, cliente o producto"
+                (keyup)="applyFilter($any($event).target.value)">
+            <mat-icon matPrefix>search</mat-icon>
+            <button matSuffix mat-icon-button *ngIf="searchControl.value" (click)="searchControl.setValue('')">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-field">
+            <mat-label>Estado</mat-label>
+            <mat-select [formControl]="estadoFilter">
+                <mat-option value="todos">Todos los estados</mat-option>
+                <mat-option *ngFor="let estado of estadosDisponibles" [value]="estado">
+                    {{estado}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-container mat-elevation-z1" style="overflow: scroll;">
+        <div *ngIf="loading" class="loading-overlay">
+            <mat-spinner diameter="50"></mat-spinner>
+        </div>
+
+        <table mat-table [dataSource]="dataSource" matSort>
+            <!-- Columna ID -->
+            <ng-container matColumnDef="idPedido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>ID Pedido</th>
+                <td mat-cell *matCellDef="let pedido">#{{pedido.idPedido}}</td>
+            </ng-container>
+
+            <!-- Columna Cliente -->
+            <ng-container matColumnDef="cliente">
+                <th mat-header-cell *matHeaderCellDef>Cliente</th>
+                <td mat-cell *matCellDef="let pedido">
+                    <div class="cliente-cell">
+                        <div class="cliente-nombre">{{pedido.cliente.nombre}}</div>
+                        <div class="cliente-email">{{pedido.cliente.email}}</div>
+                    </div>
+                </td>
+            </ng-container>
+
+            <!-- Columna Productos -->
+            <ng-container matColumnDef="productos">
+                <th mat-header-cell *matHeaderCellDef>Productos</th>
+                <td mat-cell *matCellDef="let pedido">
+                    <div class="productos-cell">
+                        <div class="producto" *ngFor="let producto of pedido.productos">
+                            {{producto.cantidad}} x {{producto.nombre}}
+                        </div>
+                        <div class="total">Total: ${{calcularTotal(pedido) | number}}</div>
+                    </div>
+                </td>
+            </ng-container>
+
+            <!-- Columna Fecha Entrega -->
+            <ng-container matColumnDef="fechaEntrega">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Entrega</th>
+                <td mat-cell *matCellDef="let pedido">
+                    {{pedido.fechaEntrega | date:'mediumDate'}}
+                </td>
+            </ng-container>
+
+            <!-- Columna Estado -->
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+                <td mat-cell *matCellDef="let pedido">
+                    <span class="estado-badge" [ngClass]="getEstadoColor(pedido.estado)">
+                        {{pedido.estado}}
+                    </span>
+                </td>
+            </ng-container>
+
+            <!-- Columna Acciones -->
+            <!-- <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let pedido">
+                    <button mat-icon-button color="primary" (click)="verDetalle(pedido)" matTooltip="Ver detalle">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" matTooltip="Editar" *ngIf="pedido.estado === 'Pendiente'">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+            </ng-container> -->
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <!-- Paginador -->
+        <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50]"
+             showFirstLastButtons class="mat-elevation-z2">
+        </mat-paginator>
+    </div>
+</div>

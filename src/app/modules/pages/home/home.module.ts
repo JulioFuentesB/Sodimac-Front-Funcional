@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -8,18 +8,32 @@ import { MaterialModule } from '../../shared/material.module';
 
 // Components
 import { ConfirmationModal } from "../../core/modals/confirmation/confirmation.modal";
+import { VistaListadoPedidosComponent } from '../vista-listado-pedidos/vista-listado-pedidos.component';
+import { VistaAsignacionRutasComponent } from '../vista-asignacion-rutas/vista-asignacion-rutas.component';
+import { ReporteEntregasComponent } from '../reporte-entregas/reporte-entregas.component';
+import { FormularioRegistroPedidosComponent } from '../formulario-registro-pedidos/formulario-registro-pedidos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ConfirmationModal
+    ConfirmationModal,
+    VistaListadoPedidosComponent,
+    VistaAsignacionRutasComponent,
+    ReporteEntregasComponent,
+    FormularioRegistroPedidosComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
-    NgSelectModule
-  ]
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
+  
 })
 export class HomeModule { }

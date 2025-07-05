@@ -3,23 +3,13 @@
 </ngx-spinner>
 
 
-<div class="version" *ngIf="environmentName !== 'PROD'">
-  <span>{{environmentName}}: {{versionNumber}}</span>
-</div>
 
-<div *ngIf="showContent && showMsj; else noPrivileges " class="rel-pos h-100-p w-100-p">
+<div class="rel-pos h-100-p w-100-p">
   <div class="main-background-header">
   </div>
   <div [ngClass.gt-sm]="'main-contend-lg'" [ngClass]="'main-contend-sm'" class="main-contend" fxLayout="column">
     <div class="header-container" fxLayout fxLayoutAlign="start center">
-      <img class="logo" src="assets/images/DataLogBlanco.png" alt="Datalog Logo" height="60">
-      <button *ngIf="(pageService.headerPage | async)?.backButton"
-        (click)="handlerBack((pageService.headerPage.getValue()).routePath || ' - ')" fxLayout
-        fxLayoutAlign="center center" mat-icon-button>
-        <mat-icon class="icon-size-24 button-back" fontSet="material-icons-round" matTooltip="Volver"
-          matTooltipPosition="above">arrow_back
-        </mat-icon>
-      </button>
+      
       <h2 [ngClass.gt-sm]="'main-tittle-lg'" [ngClass]="'main-tittle-sm'" class="main-tittle ml-8">
         {{((pageService.headerPage | async)?.tittleName || ' - ')}}
       </h2>
@@ -30,31 +20,6 @@
   </div>
 </div>
 
-<ng-template #noPrivileges>
-  <div *ngIf="showMsj" fxFill fxLayout fxLayoutAlign="center center">
-    <mat-card class="mat-card-error">
-      <div class="container-dialog yellow-border">
-        <div class="icon" fxLayout fxLayoutAlign="center center">
-          <div class="div-icon yellow-color">
-            <div fxFill fxLayout fxLayoutAlign="center center">
-              <mat-icon class="mat-icon-top">report_problem</mat-icon>
-            </div>
-          </div>
-        </div>
-        <div fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
-          <div fxFlex="0 0 80px">
-            <img src="assets/Sodimac.svg" alt="Sodimac Logo" width="100%">
-          </div>
-          <div fxFlex="1 1 auto">
-            <h2 class="mt-8 mb-8"><strong>Algo sucedió...</strong></h2>
-            <mat-dialog-content class="mat-typography">
-              {{ message }}
-            </mat-dialog-content>
-          </div>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-</ng-template>
+
 
 
