@@ -38,6 +38,12 @@ export class PedidosService {
   actualizarPedido(id: number, pedidoData: any) {
     return this.http.put<any>(`${this.apiUrl}/${id}`, pedidoData);
   }
+  getPedidosPendientes() {
+    return this.http.get(`${this.apiUrl}/pendientes`);
+  }
 
+  asignarRutas(pedidosIds: number[]) {
+    return this.http.post(`${this.apiUrl}/asignar-rutas`, pedidosIds);
+  }
 
 }

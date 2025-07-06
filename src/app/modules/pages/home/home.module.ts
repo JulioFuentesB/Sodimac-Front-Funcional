@@ -13,6 +13,7 @@ import { VistaAsignacionRutasComponent } from '../vista-asignacion-rutas/vista-a
 import { ReporteEntregasComponent } from '../reporte-entregas/reporte-entregas.component';
 import { FormularioRegistroPedidosComponent } from '../formulario-registro-pedidos/formulario-registro-pedidos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditarPedidoComponent } from '../formulario-registro-pedidos/editar-pedido/editar-pedido.component';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VistaListadoPedidosComponent,
     VistaAsignacionRutasComponent,
     ReporteEntregasComponent,
-    FormularioRegistroPedidosComponent
+    FormularioRegistroPedidosComponent,
+    EditarPedidoComponent,
+    VistaAsignacionRutasComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +37,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
-  
+
 })
 export class HomeModule { }

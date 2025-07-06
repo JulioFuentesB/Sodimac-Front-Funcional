@@ -14,9 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SpinnerInterceptor } from "./modules/core/interceptors/spinner-interceptor.interceptor";
 import { AppComponent } from './app.component';
-import { NombreDelComponenteComponent } from './modules/pages/vista-listado-pedidos/nombre-del-componente/nombre-del-componente.component';
-import { EditarPedidoComponent } from './modules/pages/formulario-registro-pedidos/editar-pedido/editar-pedido.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
 
 registerLocaleData(localeEs);
 
@@ -24,10 +23,7 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [
     AppComponent,
-    NombreDelComponenteComponent,
-    EditarPedidoComponent,
 
-    
   ],
   imports: [
     AppRoutingModule,
