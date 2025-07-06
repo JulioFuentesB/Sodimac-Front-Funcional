@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { PedidosService } from '../../core/services/pedidos.service';
 import { Pedido } from '../../core/interfaces/listado-pedidos.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vista-listado-pedidos',
@@ -15,12 +16,13 @@ import { Pedido } from '../../core/interfaces/listado-pedidos.model';
   styleUrls: ['./vista-listado-pedidos.component.scss']
 })
 export class VistaListadoPedidosComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['idPedido', 'cliente', 'productos', 'fechaEntrega', 'estado'];
+  [x: string]: any;
+  displayedColumns: string[] = ['idPedido', 'cliente', 'productos', 'fechaEntrega', 'estado','acciones'];
   estadosDisponibles = ['Pendiente', 'Asignado', 'EnTránsito', 'Entregado', 'Cancelado'];
   dataSource!: MatTableDataSource<Pedido>;
   loading = true;
   totalItems = 0;
-  pageSize = 10;
+  pageSize = 100;
   currentPage = 0;
 
   searchControl = new FormControl();
@@ -33,7 +35,8 @@ export class VistaListadoPedidosComponent implements OnInit, AfterViewInit {
 
   constructor(
     private pedidoService: PedidosService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+     public router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -141,10 +144,10 @@ export class VistaListadoPedidosComponent implements OnInit, AfterViewInit {
     // });
 
     this.loading = false;
-    this.dataSource.filterPredicate = this.createFilter();
-    this.totalItems = this.dataSource.data.length;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.filterPredicate = this.createFilter();
+    // this.totalItems = this.dataSource.data.length;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
     this.loading = false;
   }
 
@@ -176,4 +179,9 @@ export class VistaListadoPedidosComponent implements OnInit, AfterViewInit {
     return pedido.productos.reduce((total, producto) =>
       total + (producto.precio * producto.cantidad), 0);
   }
+
+  editarPedido(id: number): void {
+    
+  this.router.navigate(['/editar-pedido', id]);
+}
 }

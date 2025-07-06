@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class PedidosService {
 
-   private apiUrl = environment.apiUrl + 'pedidos';
-  constructor(public http:HttpClient) { }
+  private apiUrl = environment.apiUrl + 'pedidos';
+  constructor(public http: HttpClient) { }
 
   getPedidosPaginados(page: number, pageSize: number, searchTerm: string, estado: string) {
     const params = {
@@ -17,7 +17,7 @@ export class PedidosService {
       searchTerm,
       estado
     };
-    
+
     return this.http.get<any>(`${this.apiUrl}`, { params });
   }
 
@@ -29,6 +29,15 @@ export class PedidosService {
   //editar pedido
   editarPedido(id: number, pedido: any) {
     return this.http.put<any>(`${this.apiUrl}/${id}`, pedido);
-  } 
+  }
+
+  obtenerPedidoPorId(id: number) {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  actualizarPedido(id: number, pedidoData: any) {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, pedidoData);
+  }
+
 
 }
