@@ -73,7 +73,7 @@ export class EditarPedidoComponent implements OnInit {
         this.pedidoOriginal = pedido;
 
         // AQUÍ VA EL CÓDIGO PARA BLOQUEAR SI ESTÁ ENTREGADO
-        if (this.pedidoOriginal.estado === 'ENTREGADO') {
+        if (this.pedidoOriginal.estado.toUpperCase() === 'ENTREGADO') {
           this.pedidoForm.disable();
           this.showError('No se puede editar un pedido ya entregado');
             // También podrías ocultar el botón de guardar

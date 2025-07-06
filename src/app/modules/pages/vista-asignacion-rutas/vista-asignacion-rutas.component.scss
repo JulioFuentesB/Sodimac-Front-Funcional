@@ -171,3 +171,126 @@ mat-table {
 
 
 }
+$primary-color: #0071CE;
+$secondary-color: #DD0021;
+$tertiary-color: #FBD500;
+$success-color: #008A00;
+
+.pedidos-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 16px;
+}
+
+.filtros-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: white;
+  border-radius: 4px;
+
+  .search-field {
+    flex: 1;
+  }
+
+  .filter-field {
+    width: 200px;
+  }
+}
+
+.table-container {
+  position: relative;
+  flex: 1;
+  background: white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  .table-wrapper {
+    overflow: auto;
+    flex: 1;
+  }
+}
+
+mat-table {
+  min-width: 800px;
+  width: 100%;
+}
+
+.cliente-cell {
+  .cliente-nombre {
+    font-weight: 500;
+  }
+
+  .cliente-email {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.productos-cell {
+  .producto {
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  .total {
+    font-weight: 500;
+    color: $primary-color;
+    margin-top: 8px;
+  }
+}
+
+.estado-badge {
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+
+  &.estado-pendiente {
+    background-color: #FF9800;
+  }
+
+  &.estado-asignado {
+    background-color: #2196F3;
+  }
+
+  &.estado-transito {
+    background-color: #673AB7;
+  }
+
+  &.estado-entregado {
+    background-color: #4CAF50;
+  }
+
+  &.estado-cancelado {
+    background-color: #F44336;
+  }
+}
+
+@media (max-width: 768px) {
+  .filtros-container {
+    flex-direction: column;
+    
+    .filter-field {
+      width: 100%;
+    }
+  }
+}

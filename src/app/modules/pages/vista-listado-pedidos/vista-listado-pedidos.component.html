@@ -3,7 +3,7 @@
     <div class="filtros-container mat-elevation-z2">
         <mat-form-field appearance="outline" class="search-field">
             <mat-label>Buscar pedidos</mat-label>
-            <input matInput [formControl]="searchControl" placeholder="ID, cliente o producto">
+            <input matInput [formControl]="searchControl" placeholder="ID, cliente, dirección o producto">
             <mat-icon matPrefix>search</mat-icon>
             <button matSuffix mat-icon-button *ngIf="searchControl.value" (click)="searchControl.setValue('')">
                 <mat-icon>close</mat-icon>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="table-wrapper">
-            <table mat-table [dataSource]="dataSource" matSort>
+            <table mat-table [dataSource]="dataSource" matSort class="p-32">
                 <!-- Columna ID -->
                 <ng-container matColumnDef="idPedido">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>ID Pedido</th>
@@ -37,11 +37,12 @@
 
                 <!-- Columna Cliente -->
                 <ng-container matColumnDef="cliente">
-                    <th mat-header-cell *matHeaderCellDef>Cliente</th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Cliente</th>
                     <td mat-cell *matCellDef="let pedido">
                         <div class="cliente-cell">
                             <div class="cliente-nombre">{{pedido.cliente.nombre}}</div>
                             <div class="cliente-email">{{pedido.cliente.email}}</div>
+                            <div class="cliente-direccion">{{pedido.cliente.direccion}}</div>
                         </div>
                     </td>
                 </ng-container>
@@ -52,7 +53,7 @@
                     <td mat-cell *matCellDef="let pedido">
                         <div class="productos-cell">
                             <div class="producto" *ngFor="let producto of pedido.productos">
-                                {{producto.cantidad}} x {{producto.nombre}}
+                                {{producto.cantidad}} x {{producto.nombre}} (${{producto.precio | number}})
                             </div>
                             <div class="total">Total: ${{calcularTotal(pedido) | number}}</div>
                         </div>
@@ -63,7 +64,7 @@
                 <ng-container matColumnDef="fechaEntrega">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Entrega</th>
                     <td mat-cell *matCellDef="let pedido">
-                        {{pedido.fechaEntrega | date:'dd/MM/yyyy'}}
+                        {{formatFecha(pedido.fechaEntrega)}}
                     </td>
                 </ng-container>
 
@@ -74,6 +75,24 @@
                         <span class="estado-badge" [ngClass]="getEstadoColor(pedido.estado)">
                             {{pedido.estado}}
                         </span>
+                    </td>
+                </ng-container>
+
+                <!-- Nueva Columna Rutas -->
+                <ng-container matColumnDef="rutas">
+                    <th mat-header-cell *matHeaderCellDef>Rutas</th>
+                    <td mat-cell *matCellDef="let pedido">
+                        <div class="rutas-cell" *ngIf="pedido.rutas.length > 0; else sinRutas">
+                            <div *ngFor="let ruta of pedido.rutas" class="ruta-item">
+                                <span class="ruta-badge" [ngClass]="getRutaColor(ruta.estado)">
+                                    Ruta #{{ruta.idRuta}} - {{ruta.estado}}
+                                </span>
+                                <div class="ruta-fecha">Asignada: {{formatFecha(ruta.fechaAsignacion)}}</div>
+                            </div>
+                        </div>
+                        <ng-template #sinRutas>
+                            <span class="sin-rutas"></span>
+                        </ng-template>
                     </td>
                 </ng-container>
 
@@ -93,4 +112,4 @@
             </table>
         </div>
     </div>
-</div>
+<

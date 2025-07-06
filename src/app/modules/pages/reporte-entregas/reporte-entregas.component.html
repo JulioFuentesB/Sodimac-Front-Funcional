@@ -1,1 +1,74 @@
-<p>reporte-entregas works!</p>
+<div class="reporte-container">
+  <div *ngIf="loading" class="loading-overlay">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading && reporteData" class="reporte-content">
+    <h2 class="reporte-title">Reporte de Entregas</h2>
+    <p class="periodo-text">Período: {{reporteData.periodo}}</p>
+
+    <!-- Tarjetas de resumen -->
+    <div class="summary-cards">
+      <mat-card *ngFor="let estado of objectKeys(reporteData.totales)" class="estado-card" 
+                [style.border-top]="'5px solid ' + colorMap[estado]">
+        <mat-card-header>
+          <mat-card-title>{{estado}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-content">
+            <div class="card-value">{{reporteData.totales[estado].cantidad}}</div>
+            <div class="card-label">pedidos</div>
+            <div class="card-percentage">{{reporteData.totales[estado].porcentaje | number:'1.2-2'}}%</div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="total-card">
+        <mat-card-header>
+          <mat-card-title>Total</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-content">
+            <div class="card-value">{{getTotalPedidos()}}</div>
+            <div class="card-label">pedidos</div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Gráfico de barras con CSS -->
+    <div class="bar-chart-container">
+      <h3>Distribución de Pedidos por Estado</h3>
+      <div *ngFor="let estado of objectKeys(reporteData.totales)" class="bar-item">
+        <div class="bar-label">{{estado}} ({{reporteData.totales[estado].porcentaje | number:'1.2-2'}}%)</div>
+        <div class="bar-track">
+          <div class="bar-fill" 
+               [style.width]="getPercentageWidth(reporteData.totales[estado].porcentaje)"
+               [style.background]="colorMap[estado]">
+            <span class="bar-count">{{reporteData.totales[estado].cantidad}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráfico de pastel con CSS -->
+    <div class="pie-chart-container">
+      <h3>Porcentaje por Estado</h3>
+      <div class="pie-chart">
+        <div *ngFor="let estado of objectKeys(reporteData.totales); let i = index" 
+             class="pie-segment"
+             [style.transform]="'rotate(' + (i * 72) + 'deg)'"
+             [style.background]="colorMap[estado]"
+             [style.opacity]="0.8"
+             [style.width]="reporteData.totales[estado].porcentaje * 3.6 + 'deg'">
+        </div>
+      </div>
+      <div class="pie-legend">
+        <div *ngFor="let estado of objectKeys(reporteData.totales)" class="legend-item">
+          <span class="legend-color" [style.background]="colorMap[estado]"></span>
+          <span class="legend-label">{{estado}} ({{reporteData.totales[estado].porcentaje | number:'1.2-2'}}%)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
