@@ -1,7 +1,7 @@
-$primary-color              : #0071CE;
-$secondary-color            : #DD0021;
-$tertiary-color             : #FBD500;
-$success-color              : #008A00;
+$primary-color : #0071CE;
+$secondary-color : #DD0021;
+$tertiary-color : #FBD500;
+$success-color : #008A00;
 
 .form-container {
   background-color: white;
@@ -24,7 +24,7 @@ $success-color              : #008A00;
 .form-field {
   width: 40%;
   margin: 16px;
-  
+
 }
 
 .form-field-obs {
@@ -47,7 +47,7 @@ $success-color              : #008A00;
   display: flex;
   gap: 16px;
   align-items: center;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 8px;
@@ -56,7 +56,7 @@ $success-color              : #008A00;
 
 .producto-field {
   flex: 2;
-  
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -64,7 +64,7 @@ $success-color              : #008A00;
 
 .cantidad-field {
   flex: 1;
-  
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -72,7 +72,7 @@ $success-color              : #008A00;
 
 .remove-btn {
   margin-left: 8px;
-  
+
   @media (max-width: 768px) {
     margin-left: 0;
     margin-top: 8px;
@@ -88,16 +88,69 @@ $success-color              : #008A00;
   display: flex;
   gap: 16px;
   margin-top: 16px;
-  
+
   @media (max-width: 600px) {
     flex-direction: column;
   }
 
   button {
     flex: 1;
-    
+
     @media (max-width: 600px) {
       width: 100%;
     }
   }
+
+  .resumen-pedido {
+    padding: 16px;
+    margin: 16px 0;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+
+    h3 {
+      margin-top: 0;
+      color: #3f51b5;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  }
+
+  .form-field-obs {
+    width: 100%;
+  }
+
+  .producto-fields {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .producto-field {
+      flex: 2;
+    }
+
+    .cantidad-field {
+      flex: 1;
+      max-width: 120px;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .success-snackbar {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  .error-snackbar {
+    background-color: #f44336;
+    color: white;
+  }
+
 }

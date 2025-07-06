@@ -10,14 +10,14 @@ export class FormularioRegistroService {
   constructor(private http: HttpClient) { }
 
   getClientes() {
-    return this.http.get<any>(`${environment.apiUrl}/clientes`);
+    return this.http.get<any>(`${environment.apiUrl}clientes`);
   }
 
   getProductos() {
-    return this.http.get<any>(`${environment.apiUrl}/productos`);
+    return this.http.get<any>(`${environment.apiUrl}productos`);
   }
 
   crearPedido(pedido: any) {
-    return this.http.post<any>(`${environment.apiUrl}/pedidos`, pedido);
+    return this.http.post<any>(`${environment.apiUrl}pedidos`, pedido);
   }
 }
