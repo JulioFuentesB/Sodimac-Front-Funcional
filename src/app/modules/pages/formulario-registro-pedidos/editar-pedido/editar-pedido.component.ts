@@ -87,7 +87,7 @@ export class EditarPedidoComponent implements OnInit {
       error: () => {
         this.showError('Error al cargar el pedido');
         this.loading = false;
-        this.router.navigate(['/vista-listado-pedidos']);
+        this.router.navigate(['/home']);
       }
     });
   }

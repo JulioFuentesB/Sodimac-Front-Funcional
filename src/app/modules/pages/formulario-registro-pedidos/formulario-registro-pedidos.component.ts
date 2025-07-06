@@ -5,6 +5,9 @@ import { PedidosService } from '../../core/services/pedidos.service';
 import { FormularioRegistroService } from '../../core/services/formulario-registro.service';
 import { Cliente, Producto } from '../../core/interfaces/formulario.model';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-formulario-registro-pedidos',

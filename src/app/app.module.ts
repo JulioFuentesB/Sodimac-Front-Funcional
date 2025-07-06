@@ -25,7 +25,7 @@ registerLocaleData(localeEs);
   declarations: [
     AppComponent,
     NombreDelComponenteComponent,
-    EditarPedidoComponent,  
+    EditarPedidoComponent,
 
     
   ],
