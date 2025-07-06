@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // Puedes cargar datos iniciales aquí si es necesario
+   // this.activeTab="orders"
   }
 
   changeTab(tabId: string): void {

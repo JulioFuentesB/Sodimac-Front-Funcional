@@ -42,7 +42,7 @@ $success-color: #008A00;
 
   .assign-btn {
     white-space: nowrap;
-    
+
     mat-icon {
       margin-right: 8px;
     }
@@ -105,49 +105,69 @@ mat-table {
   .filtros-container {
     flex-direction: column;
     align-items: stretch;
-    
+
     .actions-group {
       flex-direction: column;
       gap: 12px;
-      
-      .filter-field, .assign-btn {
+
+      .filter-field,
+      .assign-btn {
         width: 100%;
       }
     }
   }
+
   /* Añadir estilos para el nuevo botón y estado */
-.filtros-container {
-  .assign-btn {
-    white-space: nowrap;
-    
-    mat-icon {
-      margin-right: 8px;
-    }
-
-    &[disabled] {
-      opacity: 0.6;
-    }
-  }
-}
-
-.estado-badge {
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-  
-  &.pendiente {
-    background-color: rgba(255, 193, 7, 0.2);
-    color: #ff9800;
-  }
-}
-
-/* Ajuste responsivo */
-@media (max-width: 768px) {
   .filtros-container {
     .assign-btn {
-      width: 100%;
+      white-space: nowrap;
+
+      mat-icon {
+        margin-right: 8px;
+      }
+
+      &[disabled] {
+        opacity: 0.6;
+      }
     }
   }
-}
+
+  .estado-badge {
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+
+    &.estado-pendiente {
+      background-color: #FF9800;
+    }
+
+    &.estado-asignado {
+      background-color: #2196F3;
+    }
+
+    &.estado-transito {
+      background-color: #673AB7;
+    }
+
+    &.estado-entregado {
+      background-color: #4CAF50;
+    }
+
+    &.estado-cancelado {
+      background-color: #F44336;
+    }
+  }
+
+  /* Ajuste responsivo */
+  @media (max-width: 768px) {
+    .filtros-container {
+      .assign-btn {
+        width: 100%;
+      }
+    }
+  }
+
+
 }

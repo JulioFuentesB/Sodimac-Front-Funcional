@@ -165,7 +165,7 @@ export class EditarPedidoComponent implements OnInit {
       next: () => {
         this.showSuccess('Pedido actualizado exitosamente');
         setTimeout(() => {
-          this.router.navigate(['/vista-listado-pedidos']);
+          this.router.navigate(['/']);
         }, 500);
       },
       error: (error: { error: { message: any; }; }) => {

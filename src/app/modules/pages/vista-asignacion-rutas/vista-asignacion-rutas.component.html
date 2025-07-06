@@ -78,16 +78,25 @@
 
 
         <!-- Nueva columna Estado -->
-        <ng-container matColumnDef="estado">
+        <!-- <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef>Estado</th>
           <td mat-cell *matCellDef="let pedido">
             <span class="estado-badge" [class.pendiente]="pedido.estado === 'Pendiente'">
               {{ pedido.estado }}
             </span>
           </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+          <td mat-cell *matCellDef="let pedido">
+            <span class="estado-badge"  style="background-color: #FF9800" [ngClass]="getEstadoColor('Pendiente')">
+              {{pedido.estado}}
+            </span>
+          </td>
         </ng-container>
 
-         <!-- Actualizar definición de columnas -->
+        <!-- Actualizar definición de columnas -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>

@@ -160,5 +160,17 @@ export class VistaAsignacionRutasComponent implements OnInit {
     });
   }
 
+   getEstadoColor(estado: string): string {
+    switch (estado) {
+      case 'Pendiente': return 'estado-pendiente';
+      case 'Asignado': return 'estado-asignado';
+      case 'EnTránsito': return 'estado-transito';
+      case 'Entregado': return 'estado-entregado';
+      case 'Cancelado': return 'estado-cancelado';
+      default: return '';
+    }
+  }
+
+
 
 }

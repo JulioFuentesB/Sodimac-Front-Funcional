@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PedidosService } from '../../core/services/pedidos.service';
@@ -7,6 +7,7 @@ import { Cliente, Producto } from '../../core/interfaces/formulario.model';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HomeComponent } from '../home/home.component';
 
 
 @Component({
@@ -20,13 +21,15 @@ export class FormularioRegistroPedidosComponent implements OnInit {
   productosDisponibles: Producto[] = [];
   loading = false;
   minDate!: Date;
+  @ViewChild(HomeComponent) homeComponent!: HomeComponent;
+
 
   constructor(
     private fb: FormBuilder,
     private pedidosService: PedidosService,
     private formularioRegistroService: FormularioRegistroService,
     private snackBar: MatSnackBar,
-     private router: Router // Inyectar Router
+    private router: Router // Inyectar Router
   ) {
     this.pedidoForm = this.createForm();
     this.minDate = new Date();
@@ -247,7 +250,7 @@ export class FormularioRegistroPedidosComponent implements OnInit {
   //   });
   // }
 
-   onSubmit(): void {
+  onSubmit(): void {
     if (this.pedidoForm.invalid) {
       this.pedidoForm.markAllAsTouched();
       this.showError('Por favor complete todos los campos requeridos');
@@ -260,13 +263,12 @@ export class FormularioRegistroPedidosComponent implements OnInit {
     this.pedidosService.crearPedido(pedidoData).subscribe({
       next: (response) => {
         this.showSuccess('Pedido registrado exitosamente');
-        //redirigir a vista-listado-pedidos.
 
-        //this.resetForm();
-              setTimeout(() => {
+        setTimeout(() => {
           this.router.navigate(['/vista-listado-pedidos']); // Cambia '/pedidos' por tu ruta real
+          //  this.router.navigate(['/']); // Cambia '/pedidos' por tu ruta real
         }, 500);
-        // Opcional: navegar a otra vista o emitir evento
+
       },
       error: (error) => {
         console.error('Error creating order:', error);
@@ -292,7 +294,7 @@ export class FormularioRegistroPedidosComponent implements OnInit {
   preparePedidoData(): any {
     const formValue = this.pedidoForm.value;
     const clienteSeleccionado = this.clientes.find(c => c.idCliente === formValue.clienteId);
-    
+
     return {
       idCliente: formValue.clienteId,
       cliente: clienteSeleccionado ? clienteSeleccionado.nombre : '',
@@ -336,30 +338,30 @@ export class FormularioRegistroPedidosComponent implements OnInit {
     });
   }
 
-getClienteSeleccionado(): Cliente | undefined {
-  const clienteId = this.pedidoForm.get('clienteId')?.value;
-  return this.clientes.find(c => c.idCliente === clienteId);
-}
-
-getProductoNombre(productoId: number): string {
-  const producto = this.productosDisponibles.find(p => p.idProducto === productoId);
-  return producto ? `${producto.nombre} (${producto.sku})` : 'Producto no encontrado';
-}
-
-calcularTotal(): number {
-  let total = 0;
-  const productos = this.pedidoForm.get('productos')?.value;
-  
-  if (productos) {
-    productos.forEach((item: any) => {
-      const producto = this.productosDisponibles.find(p => p.idProducto === item.productoId);
-      if (producto) {
-        total += producto?.precio ??0 * item.cantidad;
-      }
-    });
+  getClienteSeleccionado(): Cliente | undefined {
+    const clienteId = this.pedidoForm.get('clienteId')?.value;
+    return this.clientes.find(c => c.idCliente === clienteId);
   }
-  
-  return total;
-}
+
+  getProductoNombre(productoId: number): string {
+    const producto = this.productosDisponibles.find(p => p.idProducto === productoId);
+    return producto ? `${producto.nombre} (${producto.sku})` : 'Producto no encontrado';
+  }
+
+  calcularTotal(): number {
+    let total = 0;
+    const productos = this.pedidoForm.get('productos')?.value;
+
+    if (productos) {
+      productos.forEach((item: any) => {
+        const producto = this.productosDisponibles.find(p => p.idProducto === item.productoId);
+        if (producto) {
+          total += producto?.precio ?? 0 * item.cantidad;
+        }
+      });
+    }
+
+    return total;
+  }
 
 }

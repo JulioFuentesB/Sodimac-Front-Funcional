@@ -2,10 +2,10 @@
     <!-- Navigation Tabs -->
     <nav class="navigation-tabs mat-elevation-z2">
         <button mat-button *ngFor="let tab of tabs" [class.active]="isActive(tab.id)" (click)="changeTab(tab.id)"
-            [disabled]="tab.disabled">
+            >
             <mat-icon class="tab-icon">{{tab.icon}}</mat-icon>
             <span class="tab-label">{{tab.label}}</span>
-            <mat-icon *ngIf="tab.badge" class="tab-badge">fiber_manual_record</mat-icon>
+           
         </button>
     </nav>
 
